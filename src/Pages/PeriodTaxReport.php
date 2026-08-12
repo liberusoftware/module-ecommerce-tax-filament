@@ -52,7 +52,7 @@ class PeriodTaxReport extends Page
 
     public function mount(): void
     {
-        $this->form->fill([
+        $this->getSchema('form')?->fill([
             'from' => Carbon::now()->startOfMonth()->toDateString(),
             'until' => Carbon::now()->endOfMonth()->toDateString(),
         ]);
