@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Filament\Actions\Action;
 use Filament\Actions\Testing\TestAction;
 use Liberu\Ecommerce\Tax\Enums\Sourcing;
 use Liberu\Ecommerce\Tax\Filament\Resources\JurisdictionResource\Pages\ManageJurisdictions;
@@ -49,12 +48,7 @@ it('offers no delete action, because the evidence below a jurisdiction cascades'
     $jurisdiction = registeredJurisdiction();
     $table = Livewire::test(ManageJurisdictions::class)->instance()->getTable();
 
-    $names = array_map(
-        static fn (Action $action): string => $action->getName(),
-        $table->getFlatRecordActions(),
-    );
-
-    expect($names)->toBe(['edit']);
+    expect(array_keys($table->getFlatRecordActions()))->toBe(['edit']);
 
     Livewire::test(ManageJurisdictions::class)
         ->assertActionVisible(TestAction::make('edit')->table($jurisdiction));

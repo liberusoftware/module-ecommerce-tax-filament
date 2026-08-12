@@ -191,7 +191,10 @@ class RateVersionResource extends TaxResource
 
                 app(ReviseRate::class)($record, [
                     'label' => (string) $data['label'],
-                    'treatment' => Treatment::from((string) $data['treatment']),
+                    // Left as the schema produced it: a Select over an enum
+                    // yields the case, a filled form yields its value, and the
+                    // model's cast reads both.
+                    'treatment' => $data['treatment'],
                     'reason' => $data['reason'] === null ? null : (string) $data['reason'],
                     'basis_points' => (int) $data['basis_points'],
                     'sequence' => (int) $data['sequence'],
