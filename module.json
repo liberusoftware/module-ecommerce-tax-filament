@@ -1,0 +1,28 @@
+{
+    "name": "ecommerce-tax-filament",
+    "version": "0.1.0",
+    "category": "presentation",
+    "provider": "Liberu\\Ecommerce\\Tax\\Filament\\TaxFilamentServiceProvider",
+    "description": "Filament 5 operator surface for tax jurisdictions, registrations, rate versions and the append-only quote ledger.",
+    "features": [
+        "Operator surface for jurisdictions, registrations and effective-dated rate versions",
+        "Revising a rate creates a successor version; there is no edit-in-place form",
+        "Quotes and rate versions are read-only at the resource level, below the policy layer",
+        "Every unpublished ability is refused by name, including the relation abilities",
+        "Quote evidence is read whole: lines, treatments, reasons and rate applications",
+        "Period tax report folded from the quote ledger three independent ways",
+        "Rates render as basis points and a decimal string, never as a float"
+    ],
+    "presentation": {
+        "filament": {
+            "admin": [
+                "Liberu\\Ecommerce\\Tax\\Filament\\TaxPanelPlugin"
+            ]
+        }
+    },
+    "requires": {
+        "packages": {
+            "liberusoftware/ecommerce-tax": "^0.1.0"
+        }
+    }
+}
